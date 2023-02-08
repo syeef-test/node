@@ -58,8 +58,27 @@
 // console.log('different objects');//as referance is stored in obj
 // }
 
+//some desut question
 
 // const obj1 = {'key1': 1 , 'key2' : 2};
 // const obj2 = { ...obj1, key1: 1000};
 // console.log(obj1);//{ key1: 1, key2: 2 }
 // console.log(obj2);//{ key1: 1000, key2: 2 }
+
+
+// const obj1 = {'key1': 1, "key2": 2, "key3": 1000};
+// const { key1, key3} = { ...obj1};
+// console.log(key1, key3);//1,1000
+
+// const arr1 = ['value1', 'value2'];
+// const [ val1, val2 ] = arr1;
+// console.log(val1);
+// console.log(val2);
+
+
+// const obj1 = {'key1': 1, "key2": 2, "key3": 1000};
+// let { key1, key3} = obj1;
+// key1 = 20;
+// key3 = 123;
+// console.log(obj1.key1, obj1.key3);//1,1000
+// console.log(key1,key3);//20,123
