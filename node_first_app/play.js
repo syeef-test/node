@@ -1,84 +1,66 @@
-//const hobbies = ['sports','coocking'];
-// for(let hobby of hobbies){
-//     console.log(hobby);
-// }
+//async code
 
-// console.log(hobbies.map(hobby=>'Hobby:'+hobby));
-// console.log(hobbies);
+// const fetchData = () =>{
+//     const promise = new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//            resolve("Done!");
+//         },1500);
+    
+//     });
+//     return promise;
 
-
-// array = ['apple', 'oranges' , '', 'mango', '' , 'lemon'];
-
-//  const newArray = array.map(fruit=>{
-//     if (fruit == ''){
-//         return 'empty string';
-//     }else{
-//         return fruit;
-//     }
-//  });
-
-//  console.log(newArray);
-
-
-//const newArray = hobbies.slice();//copy hobbies full portion into newArray if no argument passed
-// const newArray = [...hobbies];//spread operater copy hobbies to newArray,same for object
-// console.log(newArray);
-
-
-// const toArray = (...args)=>{        //rest use in function as argument
-//     return args;
 // };
 
-// console.log(toArray(1,2,3,4));
+// setTimeout(()=>{
+//     console.log("Timer is done!");
+//     fetchData().then(text=>{
+//         console.log(text);
+//         return fetchData();
+//     }).then(text2=>{
+//         console.log(text2);
+//         return fetchData();
+//     });
+// },2000);
 
-// const person = {
-//     name:'kazi',
-//     age:29,
-//     greet(){
-//         console.log('Hi,I am'+this.name);
-//     }
-// };
-
-// const printName = ({name})=>{
-//     console.log(name);
-// };
-// printName(person);
-
-// const {name,age} = person;
-// console.log(name,age);
-
+// console.log('a');
+// console.log('b');
+// setTimeout(()=>console.log('c'),3000);
+// setTimeout(()=>console.log('d'),0);
+// console.log('e');//abedc
 
 
-// const obj1 = {'key1': 1};
-// const obj2 = { ...obj1};
-// if(obj2 === obj1){
-// console.log('same objects');
-// }
-// else{
-// console.log('different objects');//as referance is stored in obj
-// }
-
-//some desut question
-
-// const obj1 = {'key1': 1 , 'key2' : 2};
-// const obj2 = { ...obj1, key1: 1000};
-// console.log(obj1);//{ key1: 1, key2: 2 }
-// console.log(obj2);//{ key1: 1000, key2: 2 }
 
 
-// const obj1 = {'key1': 1, "key2": 2, "key3": 1000};
-// const { key1, key3} = { ...obj1};
-// console.log(key1, key3);//1,1000
 
-// const arr1 = ['value1', 'value2'];
-// const [ val1, val2 ] = arr1;
-// console.log(val1);
-// console.log(val2);
+const fetch1 = () => {
+  const promise = new Promise((res, rej) => {
+    setTimeout(() => {
+      res("c");
+    }, 3000);
+   
+  });
+  return promise;
+  
+};
+const fetch2 = () => {
+  const promise2 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res("d");
+      }, 0);
+      
+    });
+    return promise2;
+  
+};
 
+async function printData() {
+  console.log("a");
+  console.log("b");
+  const f1 = await fetch1();
+  console.log(f1);
+  const f2 = await fetch2();
+  console.log(f2);
+  console.log("e");
+}
 
-// const obj1 = {'key1': 1, "key2": 2, "key3": 1000};
-// let { key1, key3} = obj1;
-// key1 = 20;
-// key3 = 123;
-// console.log(obj1.key1, obj1.key3);//1,1000
-// console.log(key1,key3);//20,123
+printData();
