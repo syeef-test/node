@@ -11,25 +11,17 @@ const app = express();
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const contactusRoutes = require('./routes/contactus');
-const successRoutes = require('./routes/success');
+
 
 app.use(bodyParser.urlencoded({extended:false}));
-//app.use(express.static(path.join(__dirname,'public')));
-app.use('/static', express.static(path.join(__dirname, 'public')))
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin',adminRoutes);
 app.use('/shop',shopRoutes);
 app.use(contactusRoutes);
-app.use(successRoutes);
-
 
 app.use(errorController.show404);
-
-
-
-
-
-
 
 app.listen(3000);
 

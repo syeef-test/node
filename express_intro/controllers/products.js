@@ -2,9 +2,9 @@ const path = require('path');
 const rootDir = require('../util/path');
 
 
-exports.showProductPage = (req,res,next)=>{
-    res.sendFile(path.join(rootDir,'views','shop.html'));
-};
+const Product = require('../models/products');
+
+
 
 exports.showAddProductPage = (req,res,next)=>{
     
@@ -13,6 +13,21 @@ exports.showAddProductPage = (req,res,next)=>{
 };
 
 exports.postAddProductPage = (req,res,next)=>{
-    //console.log(req.body);
+   
+    const product = new Product(req.body.title);
+    product.save();
+    
+    
     res.redirect('/shop');
+    
+    
+};
+
+
+exports.showProductPage = (req,res,next)=>{
+    Product.fetchAll((products)=>{
+        console.log(products);
+    });
+    //console.log(product);
+    res.sendFile(path.join(rootDir,'views','shop.html'));
 };
